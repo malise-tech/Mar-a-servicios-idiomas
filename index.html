@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios de Idiomas | Kreyòl · Français · Español</title>
+  <meta name="description" content="Servicios profesionales de traducción, clases e interpretación en creole, francés y español." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --accent: #f59e0b;
+      --dark: #0f172a;
+      --gray: #64748b;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --shadow: 0 10px 30px -10px rgba(0,0,0,.15);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    h1, h2, h3 { font-family: 'Poppins', sans-serif; line-height: 1.2; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== Header ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo span { color: var(--primary); }
+
+    .lang-switch { display: flex; gap: 4px; background: var(--light); padding: 4px; border-radius: 999px; border: 1px solid var(--border); }
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: .85rem;
+      color: var(--gray);
+      transition: all .2s;
+      font-family: inherit;
+    }
+    .lang-btn.active { background: var(--primary); color: var(--white); }
+    .lang-btn:hover:not(.active) { color: var(--dark); }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: 80px 0 90px;
+      background: linear-gradient(160deg, #eff6ff 0%, #ffffff 60%);
+      text-align: center;
+    }
+    .hero .flags { font-size: 2rem; margin-bottom: 20px; letter-spacing: 6px; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; margin-bottom: 20px; }
+    .hero h1 .grad {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p { font-size: 1.2rem; color: var(--gray); max-width: 620px; margin: 0 auto 36px; }
+    .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: transform .15s, box-shadow .2s;
+      font-family: inherit;
+    }
+    .btn-primary { background: var(--primary); color: #fff; box-shadow: var(--shadow); }
+    .btn-primary:hover { transform: translateY(-2px); background: var(--primary-dark); }
+    .btn-outline { background: #fff; color: var(--dark); border: 1px solid var(--border); }
+    .btn-outline:hover { transform: translateY(-2px); border-color: var(--primary); color: var(--primary); }
+    .btn-whatsapp { background: #25d366; color: #fff; box-shadow: var(--shadow); }
+    .btn-whatsapp:hover { transform: translateY(-2px); background: #1da851; }
+
+    /* ===== Sections ===== */
+    section { padding: 80px 0; }
+    .section-title { text-align: center; margin-bottom: 56px; }
+    .section-title h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 12px; }
+    .section-title p { color: var(--gray); font-size: 1.1rem; max-width: 560px; margin: 0 auto; }
+
+    /* ===== Services ===== */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 30px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
+    .card .icon {
+      width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      background: #eff6ff;
+      border-radius: 14px;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+    .card h3 { font-size: 1.3rem; margin-bottom: 12px; }
+    .card p { color: var(--gray); }
+
+    /* ===== About / Languages ===== */
+    .about { background: var(--light); }
+    .langs { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+    .lang-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 36px;
+      text-align: center;
+      min-width: 200px;
+    }
+    .lang-card .flag { font-size: 2.4rem; }
+    .lang-card h3 { margin: 12px 0 4px; }
+    .lang-card span { color: var(--accent); font-weight: 600; font-size: .9rem; }
+
+    /* ===== Pricing hint ===== */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 24px; }
+    .step { text-align: center; padding: 20px; }
+    .step .num {
+      width: 48px; height: 48px; margin: 0 auto 16px;
+      background: var(--primary); color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1.2rem;
+    }
+    .step h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .step p { color: var(--gray); font-size: .95rem; }
+
+    /* ===== Contact ===== */
+    .contact { background: linear-gradient(160deg, var(--dark), #1e293b); color: #fff; text-align: center; }
+    .contact h2 { color: #fff; }
+    .contact .section-title p { color: #cbd5e1; }
+
+    /* ===== Footer ===== */
+    footer { background: var(--dark); color: #94a3b8; padding: 30px 0; text-align: center; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.08); }
+
+    /* ===== Bio ===== */
+    .bio { max-width: 760px; margin: 0 auto; text-align: center; }
+    .bio p { font-size: 1.15rem; color: #475569; }
+    .bio strong { color: var(--dark); }
+    .badges { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #eff6ff; color: var(--primary-dark);
+      padding: 10px 18px; border-radius: 999px;
+      font-weight: 600; font-size: .95rem;
+    }
+
+    [data-lang] { display: none; }
+    [data-lang].show { display: inline; }
+    .block[data-lang] { display: none; }
+    .block[data-lang].show { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">🌐 María</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-set="ht">Kreyòl</button>
+        <button class="lang-btn" data-set="fr">Français</button>
+        <button class="lang-btn active" data-set="es">Español</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="flags">🇭🇹 🇫🇷 🇪🇸</div>
+      <h1>
+        <span data-lang="es" class="show">Servicios profesionales de <span class="grad">idiomas</span></span>
+        <span data-lang="fr">Services professionnels de <span class="grad">langues</span></span>
+        <span data-lang="ht">Sèvis pwofesyonèl nan <span class="grad">lang</span></span>
+      </h1>
+      <p>
+        <span data-lang="es" class="show">Traducción, clases e interpretación en creole, francés y español. Soy psicóloga escolar y educadora con más de 10 años de experiencia acompañando a familias y estudiantes.</span>
+        <span data-lang="fr">Traduction, cours et interprétation en créole, français et espagnol. Psychologue scolaire et éducatrice avec plus de 10 ans d'expérience auprès des familles et des élèves.</span>
+        <span data-lang="ht">Tradiksyon, kou ak entèpretasyon an kreyòl, fransè ak panyòl. Mwen se sikològ eskolè e edikatè ak plis pase 10 lane eksperyans ap akonpaye fanmi ak elèv.</span>
+      </p>
+      <div class="cta-row">
+        <a href="#contacto" class="btn btn-primary">
+          <span data-lang="es" class="show">Solicitar presupuesto</span>
+          <span data-lang="fr">Demander un devis</span>
+          <span data-lang="ht">Mande yon pri</span>
+        </a>
+        <a href="#servicios" class="btn btn-outline">
+          <span data-lang="es" class="show">Ver servicios</span>
+          <span data-lang="fr">Voir les services</span>
+          <span data-lang="ht">Wè sèvis yo</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Services ===== -->
+  <section id="servicios">
+    <div class="container">
+      <div class="section-title">
+        <h2>
+          <span data-lang="es" class="show">Lo que ofrezco</span>
+          <span data-lang="fr">Ce que je propose</span>
+          <span data-lang="ht">Sa mwen ofri</span>
+        </h2>
+        <p>
+          <span data-lang="es" class="show">Servicios adaptados a tus necesidades.</span>
+          <span data-lang="fr">Des services adaptés à vos besoins.</span>
+          <span data-lang="ht">Sèvis ki adapte ak bezwen ou.</span>
+        </p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">📝</div>
+          <h3>
+            <span data-lang="es" class="show">Traducción</span>
+            <span data-lang="fr">Traduction</span>
+            <span data-lang="ht">Tradiksyon</span>
+          </h3>
+          <p>
+            <span data-lang="es" class="show">Documentos, sitios web, subtítulos y textos. Traducción precisa entre creole, francés y español.</span>
+            <span data-lang="fr">Documents, sites web, sous-titres et textes. Traduction précise entre créole, français et espagnol.</span>
+            <span data-lang="ht">Dokiman, sit entènèt, soutit ak tèks. Tradiksyon egzak ant kreyòl, fransè ak panyòl.</span>
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">🎓</div>
+          <h3>
+            <span data-lang="es" class="show">Clases y apoyo escolar</span>
+            <span data-lang="fr">Cours et soutien scolaire</span>
+            <span data-lang="ht">Kou ak sipò eskolè</span>
+          </h3>
+          <p>
+            <span data-lang="es" class="show">Clases de idiomas y apoyo escolar personalizado para todos los niveles, con una profesora con más de 10 años de experiencia en educación.</span>
+            <span data-lang="fr">Cours de langues et soutien scolaire personnalisé pour tous les niveaux, avec une enseignante ayant plus de 10 ans d'expérience en éducation.</span>
+            <span data-lang="ht">Kou lang ak sipò eskolè pèsonalize pou tout nivo, ak yon pwofesè ki gen plis pase 10 lane eksperyans nan edikasyon.</span>
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">🗣️</div>
+          <h3>
+            <span data-lang="es" class="show">Interpretación</span>
+            <span data-lang="fr">Interprétation</span>
+            <span data-lang="ht">Entèpretasyon</span>
+          </h3>
+          <p>
+            <span data-lang="es" class="show">Interpretación remota o presencial para escuelas, clínicas y ONGs que atienden a familias haitianas y francófonas: reuniones, citas médicas y trámites.</span>
+            <span data-lang="fr">Interprétation à distance ou sur place pour écoles, cliniques et ONG qui accompagnent les familles haïtiennes et francophones : réunions, rendez-vous médicaux et démarches.</span>
+            <span data-lang="ht">Entèpretasyon adistans oswa sou plas pou lekòl, klinik ak ONG k ap sèvi fanmi ayisyen ak frankofòn: reyinyon, randevou medikal ak demach.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About me ===== -->
+  <section id="sobre-mi" class="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>
+          <span data-lang="es" class="show">Sobre mí</span>
+          <span data-lang="fr">À propos de moi</span>
+          <span data-lang="ht">Sou mwen</span>
+        </h2>
+      </div>
+      <div class="bio">
+        <p class="block" data-lang="es">
+          Soy <strong>María</strong>, licenciada en <strong>psicología escolar</strong> con más de
+          <strong>10 años de experiencia en educación</strong> como profesora. He colaborado con
+          <strong>ONG en actividades sociales y comunitarias</strong>, apoyando a personas y familias.
+          Hablo <strong>creole, francés y español</strong> con fluidez, lo que me permite acompañar a
+          estudiantes y familias multilingües con cercanía, empatía y profesionalismo.
+        </p>
+        <p class="block" data-lang="fr">
+          Je suis <strong>María</strong>, licenciée en <strong>psychologie scolaire</strong> avec plus de
+          <strong>10 ans d'expérience dans l'éducation</strong> en tant qu'enseignante. J'ai collaboré avec
+          des <strong>ONG dans des activités sociales et communautaires</strong>, en accompagnant des
+          personnes et des familles. Je parle couramment le <strong>créole, le français et l'espagnol</strong>,
+          ce qui me permet d'accompagner les élèves et les familles multilingues avec proximité, empathie et professionnalisme.
+        </p>
+        <p class="block" data-lang="ht">
+          Mwen se <strong>María</strong>, mwen gen yon lisans nan <strong>sikoloji eskolè</strong> ak plis pase
+          <strong>10 lane eksperyans nan edikasyon</strong> kòm pwofesè. Mwen kolabore ak
+          <strong>ONG nan aktivite sosyal ak kominotè</strong>, ap sipòte moun ak fanmi. Mwen pale
+          <strong>kreyòl, fransè ak panyòl</strong> kouramman, sa ki pèmèt mwen akonpaye elèv ak fanmi ki pale
+          plizyè lang ak pwoksimite, anpati e pwofesyonalis.
+        </p>
+        <div class="badges">
+          <span class="badge">🎓 <span data-lang="es" class="show">Psicología escolar</span><span data-lang="fr">Psychologie scolaire</span><span data-lang="ht">Sikoloji eskolè</span></span>
+          <span class="badge">📚 <span data-lang="es" class="show">+10 años en educación</span><span data-lang="fr">+10 ans en éducation</span><span data-lang="ht">+10 lane nan edikasyon</span></span>
+          <span class="badge">🤝 <span data-lang="es" class="show">Experiencia con ONG</span><span data-lang="fr">Expérience avec ONG</span><span data-lang="ht">Eksperyans ak ONG</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Languages / About ===== -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>
+          <span data-lang="es" class="show">Idiomas que domino</span>
+          <span data-lang="fr">Langues que je maîtrise</span>
+          <span data-lang="ht">Lang mwen metrize</span>
+        </h2>
+        <p>
+          <span data-lang="es" class="show">Hablante con fluidez en tres idiomas.</span>
+          <span data-lang="fr">Locuteur courant dans trois langues.</span>
+          <span data-lang="ht">Mwen pale twa lang kouramman.</span>
+        </p>
+      </div>
+      <div class="langs">
+        <div class="lang-card">
+          <div class="flag">🇭🇹</div>
+          <h3>Kreyòl</h3>
+          <span>★★★★★</span>
+        </div>
+        <div class="lang-card">
+          <div class="flag">🇫🇷</div>
+          <h3>Français</h3>
+          <span>★★★★★</span>
+        </div>
+        <div class="lang-card">
+          <div class="flag">🇪🇸</div>
+          <h3>Español</h3>
+          <span>★★★★★</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== For whom ===== -->
+  <section class="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>
+          <span data-lang="es" class="show">¿Para quién?</span>
+          <span data-lang="fr">Pour qui ?</span>
+          <span data-lang="ht">Pou kiyès?</span>
+        </h2>
+        <p>
+          <span data-lang="es" class="show">Acompaño a quienes necesitan comunicarse entre idiomas y culturas.</span>
+          <span data-lang="fr">J'accompagne ceux qui doivent communiquer entre langues et cultures.</span>
+          <span data-lang="ht">Mwen akonpaye moun ki bezwen kominike ant lang ak kilti.</span>
+        </p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🏫</div>
+          <h3>
+            <span data-lang="es" class="show">Escuelas y colegios</span>
+            <span data-lang="fr">Écoles et collèges</span>
+            <span data-lang="ht">Lekòl ak kolèj</span>
+          </h3>
+          <p>
+            <span data-lang="es" class="show">Apoyo en la comunicación con estudiantes y familias que hablan creole o francés.</span>
+            <span data-lang="fr">Soutien à la communication avec les élèves et familles parlant créole ou français.</span>
+            <span data-lang="ht">Sipò nan kominikasyon ak elèv ak fanmi ki pale kreyòl oswa fransè.</span>
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">👨‍👩‍👧</div>
+          <h3>
+            <span data-lang="es" class="show">Familias y estudiantes</span>
+            <span data-lang="fr">Familles et élèves</span>
+            <span data-lang="ht">Fanmi ak elèv</span>
+          </h3>
+          <p>
+            <span data-lang="es" class="show">Clases, apoyo escolar y orientación para familias multilingües.</span>
+            <span data-lang="fr">Cours, soutien scolaire et orientation pour les familles multilingues.</span>
+            <span data-lang="ht">Kou, sipò eskolè ak oryantasyon pou fanmi ki pale plizyè lang.</span>
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">🤝</div>
+          <h3>
+            <span data-lang="es" class="show">ONGs y clínicas</span>
+            <span data-lang="fr">ONG et cliniques</span>
+            <span data-lang="ht">ONG ak klinik</span>
+          </h3>
+          <p>
+            <span data-lang="es" class="show">Traducción e interpretación para programas sociales, salud y atención comunitaria.</span>
+            <span data-lang="fr">Traduction et interprétation pour programmes sociaux, santé et action communautaire.</span>
+            <span data-lang="ht">Tradiksyon ak entèpretasyon pou pwogram sosyal, sante ak sèvis kominotè.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>
+          <span data-lang="es" class="show">¿Cómo funciona?</span>
+          <span data-lang="fr">Comment ça marche ?</span>
+          <span data-lang="ht">Kijan li mache?</span>
+        </h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>
+            <span data-lang="es" class="show">Me contactas</span>
+            <span data-lang="fr">Vous me contactez</span>
+            <span data-lang="ht">Ou kontakte m</span>
+          </h3>
+          <p>
+            <span data-lang="es" class="show">Cuéntame qué necesitas y en qué idiomas.</span>
+            <span data-lang="fr">Dites-moi ce dont vous avez besoin et dans quelles langues.</span>
+            <span data-lang="ht">Di m sa ou bezwen ak nan ki lang.</span>
+          </p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>
+            <span data-lang="es" class="show">Recibes un presupuesto</span>
+            <span data-lang="fr">Vous recevez un devis</span>
+            <span data-lang="ht">Ou resevwa yon pri</span>
+          </h3>
+          <p>
+            <span data-lang="es" class="show">Te envío precio y plazo de entrega claros.</span>
+            <span data-lang="fr">Je vous envoie un prix et un délai clairs.</span>
+            <span data-lang="ht">Mwen voye yon pri ak yon delè klè pou ou.</span>
+          </p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>
+            <span data-lang="es" class="show">Entrego el trabajo</span>
+            <span data-lang="fr">Je livre le travail</span>
+            <span data-lang="ht">Mwen livre travay la</span>
+          </h3>
+          <p>
+            <span data-lang="es" class="show">Recibes un resultado profesional a tiempo.</span>
+            <span data-lang="fr">Vous recevez un résultat professionnel à temps.</span>
+            <span data-lang="ht">Ou resevwa yon rezilta pwofesyonèl alè.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contacto" class="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>
+          <span data-lang="es" class="show">Trabajemos juntos</span>
+          <span data-lang="fr">Travaillons ensemble</span>
+          <span data-lang="ht">Ann travay ansanm</span>
+        </h2>
+        <p>
+          <span data-lang="es" class="show">Escríbeme hoy y te respondo lo antes posible.</span>
+          <span data-lang="fr">Écrivez-moi aujourd'hui, je réponds rapidement.</span>
+          <span data-lang="ht">Ekri m jodi a, m ap reponn ou byen vit.</span>
+        </p>
+      </div>
+      <div class="cta-row">
+        <a href="https://wa.me/18094988355" class="btn btn-whatsapp" target="_blank" rel="noopener">
+          💬 WhatsApp: 809-498-8355
+        </a>
+        <a href="mailto:toutsavoir2000@gmail.com" class="btn btn-primary">
+          ✉️ toutsavoir2000@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> María · Psicóloga escolar y educadora · Kreyòl · Français · Español</p>
+    </div>
+  </footer>
+
+  <script>
+    // Language switcher
+    const buttons = document.querySelectorAll('.lang-btn');
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('show', el.getAttribute('data-lang') === lang);
+      });
+      buttons.forEach(b => b.classList.toggle('active', b.getAttribute('data-set') === lang));
+      document.documentElement.lang = lang === 'ht' ? 'ht' : lang;
+    }
+    buttons.forEach(btn => btn.addEventListener('click', () => setLang(btn.getAttribute('data-set'))));
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
